@@ -1,5 +1,7 @@
 package com.niit.collab.DAO;
 
+import java.util.List;
+
 import com.niit.collab.model.Event;
 
 public interface EventDAO 
@@ -11,6 +13,8 @@ public interface EventDAO
 	public boolean update(Event event);
 	
 	public boolean delete(Event event);
+
+	public List<Event> list();
 	
 	
 	

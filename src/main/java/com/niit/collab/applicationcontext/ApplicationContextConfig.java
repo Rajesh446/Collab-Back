@@ -55,8 +55,8 @@ public SessionFactory getSessionFactory(DataSource dataSource){
 	sessionBuilder.addAnnotatedClass(Blog.class);
 	sessionBuilder.addAnnotatedClass(Users.class);
 	sessionBuilder.addAnnotatedClass(Event.class);
-	/*sessionBuilder.addAnnotatedClass(Forum.class);
-	sessionBuilder.addAnnotatedClass(Job.class);*/
+	sessionBuilder.addAnnotatedClass(Forum.class);
+	/*sessionBuilder.addAnnotatedClass(Job.class);*/
 	return sessionBuilder.buildSessionFactory();
 	
 }
@@ -92,16 +92,16 @@ public EventDAO getEventDAO(SessionFactory sessionFactory){
 	
 	return new EventDAOImpl(sessionFactory);
 }
-/*@Autowired
+@Autowired
 @Bean(name="forumDAO")
 public ForumDAO getForumDAO(SessionFactory sessionFactory){
 	
 	return new ForumDAOImpl(sessionFactory);
 }
-@Autowired
+/*@Autowired
 @Bean(name="jobDAO")
 public JobDAO getJobDAO(SessionFactory sessionFactory){
 	
 	return new JobDAOImpl(sessionFactory);
-}*/
 }
+*/}

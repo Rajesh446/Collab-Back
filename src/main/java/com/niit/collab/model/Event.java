@@ -2,15 +2,26 @@ package com.niit.collab.model;
 
 import java.util.Date;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+
+
+@Table
+@Entity
+@Component
+
+
 
 public class Event 
 
 
 {
-
+	
 @Id
 @GeneratedValue
 

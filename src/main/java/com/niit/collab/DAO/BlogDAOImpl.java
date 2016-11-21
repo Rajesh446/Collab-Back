@@ -36,12 +36,12 @@ public class BlogDAOImpl implements BlogDAO
 	}
 
 
-@Override
-public boolean Update(Blog blog) {
+@Transactional
+public boolean update(Blog blog) {
 	
 	
 	try {
-		sessionFactory.getCurrentSession().update(blog);
+		 sessionFactory.getCurrentSession().update(blog);
 		System.out.println("update");
 		return true;
 	} catch (Exception e) {

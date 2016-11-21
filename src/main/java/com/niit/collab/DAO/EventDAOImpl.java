@@ -1,10 +1,14 @@
 package com.niit.collab.DAO;
 
+import java.util.List;
+
+import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.niit.collab.model.Blog;
 import com.niit.collab.model.Event;
 
 
@@ -85,6 +89,13 @@ public class EventDAOImpl implements EventDAO
 		return false;
 	}
 	
+	}
+
+	@Transactional
+	public List<Event> list() {
+		Criteria c=sessionFactory.getCurrentSession().createCriteria(Event.class);
+		List<Event> list=c.list();
+		return list;
 	}
 
 }

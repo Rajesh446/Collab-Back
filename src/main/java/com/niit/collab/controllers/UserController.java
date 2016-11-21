@@ -33,6 +33,5 @@ public ResponseEntity<List<Users>> listuser(){
 	List<Users> users =usersDAO.getAllUsers();
 	return new ResponseEntity<List<Users>>(users,HttpStatus.OK);
 	
-	
 }
 }

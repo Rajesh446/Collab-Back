@@ -1,4 +1,17 @@
+com\niit\collab\applicationcontext\ApplicationContextConfig.class
+com\niit\collab\DAO\BlogDAO.class
+com\niit\collab\model\Blog.class
+com\niit\collab\model\Forum.class
 com\niit\collab\DAO\UsersDAO.class
+com\niit\collab\DAO\ForumDAOImpl.class
 com\niit\collab\DAO\UsersDAOImpl.class
 com\niit\collab\model\Users.class
+com\niit\collab\controllers\ForumController.class
+com\niit\collab\DAO\EventDAOImpl.class
+com\niit\collab\controllers\EventController.class
+com\niit\collab\DAO\ForumDAO.class
+com\niit\collab\model\Event.class
 com\niit\collab\controllers\UserController.class
+com\niit\collab\controllers\BlogController.class
+com\niit\collab\DAO\BlogDAOImpl.class
+com\niit\collab\DAO\EventDAO.class

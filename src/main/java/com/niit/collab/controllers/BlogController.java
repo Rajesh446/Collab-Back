@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.niit.collab.DAO.BlogDAO;
@@ -30,9 +32,11 @@ public ResponseEntity<Blog> addblog(@RequestBody Blog blog){
 	
 }
 
+@RequestMapping(value="/updateblog" , method=RequestMethod.PUT)
+
 public ResponseEntity<Blog> updateblog(@RequestBody Blog blog){
 	System.out.println("hello");
-	blogDAO.Update(blog);
+	blogDAO.update(blog);
 	return new ResponseEntity<Blog>(blog,HttpStatus.OK);
 	
 }

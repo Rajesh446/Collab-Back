@@ -26,7 +26,7 @@ http://www.springframework.org/schema/websocket/spring-websocket.xsd">
 		<websocket:simple-broker prefix="/topic, /queue" />
 	</websocket:message-broker> -->
 
-	<bean
+	<!-- <bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/"></property>
 		<property name="suffix" value=".jsp"></property>
@@ -49,7 +49,7 @@ http://www.springframework.org/schema/websocket/spring-websocket.xsd">
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="100000" />
 	</bean>
-
+ -->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 	<tx:annotation-driven />
 </beans>

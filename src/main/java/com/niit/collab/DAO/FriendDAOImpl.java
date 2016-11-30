@@ -37,7 +37,7 @@ public class FriendDAOImpl implements FriendDAO
 	{
 	try
 	{
-		SessionFactory.getCurrentSession().save(friend);
+		SessionFactory.getCurrentSession().saveOrUpdate(friend);
 		return true;
 		
 	}

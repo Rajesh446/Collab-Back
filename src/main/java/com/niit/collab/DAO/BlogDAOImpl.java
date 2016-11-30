@@ -26,7 +26,7 @@ public class BlogDAOImpl implements BlogDAO
 @Transactional
 	public boolean Save(Blog blog) {
 		try {
-			sessionFactory.getCurrentSession().save(blog);
+			sessionFactory.getCurrentSession().saveOrUpdate(blog);
 			System.out.println("save");
 			return true;
 		} catch (Exception e) {

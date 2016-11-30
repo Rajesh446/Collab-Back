@@ -5,11 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.niit.collab.DAO.ForumDAO;
@@ -29,7 +28,7 @@ public class ForumController
 	
 	
 	@RequestMapping(value="/CreateForum" ,method=RequestMethod.POST)
-	public ResponseEntity<Forum> createForum(@RequestBody Forum forum) 
+	public ResponseEntity<Forum> addforum(@RequestBody Forum forum) 
 	{
 	
 		System.out.println("Creation of FORUM");
@@ -40,7 +39,7 @@ public class ForumController
 	}
 	
 	
-	@RequestMapping(value="/UpdateForum" ,method=RequestMethod.PUT)
+	/*@RequestMapping(value="/UpdateForum" ,method=RequestMethod.PUT)
 	public ResponseEntity<Forum> updateForum(@RequestBody Forum forum) 
 	{
 	
@@ -49,23 +48,22 @@ public class ForumController
 		forumDAO.update(forum);
 		
 		return new ResponseEntity<Forum>(forum ,HttpStatus.OK);
-	}
+	}*/
 	
 	
 	@RequestMapping(value="/DeleteForum/{id}" ,method=RequestMethod.DELETE)
-	public ResponseEntity<Forum> deleteForum(@RequestBody Forum forum) 
+	public ResponseEntity<Forum> deleteForum(Forum forum,@PathVariable("id") int id) 
 	{
-	
 		System.out.println("deleting of FORUM");
-		
 		forumDAO.delete(forum);
-		
 		return new ResponseEntity<Forum>(forum ,HttpStatus.OK);
 	}
 	
+	
+	
 	@RequestMapping(value="/Forum" , method=RequestMethod.GET)
 	public ResponseEntity<List<Forum>> listforum(){
-		System.out.println("list of blog");
+		System.out.println("list of forum");
 		List<Forum> forum =forumDAO.list();
 		return new ResponseEntity<List<Forum>>(forum,HttpStatus.OK);
 	}

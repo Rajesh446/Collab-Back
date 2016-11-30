@@ -28,7 +28,7 @@ public class ForumDAOImpl implements ForumDAO {
 	public boolean save(Forum forum) {
 		try
 		{
-			sessionFactory.getCurrentSession().save(forum);
+			sessionFactory.getCurrentSession().saveOrUpdate(forum);
 			
 			return true;
 			

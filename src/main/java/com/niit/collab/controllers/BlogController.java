@@ -32,14 +32,15 @@ public ResponseEntity<Blog> addblog(@RequestBody Blog blog){
 	
 }
 
-@RequestMapping(value="/updateblog" , method=RequestMethod.PUT)
+/*@RequestMapping(value="/updateblog" , method=RequestMethod.PUT)
 
-public ResponseEntity<Blog> updateblog(@RequestBody Blog blog){
+public ResponseEntity<Blog> updateblog(@RequestBody Blog blog)
+{
 	System.out.println("hello");
 	blogDAO.update(blog);
 	return new ResponseEntity<Blog>(blog,HttpStatus.OK);
 	
-}
+}*/
 
 
 

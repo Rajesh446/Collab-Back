@@ -85,7 +85,7 @@ public class ForumDAOImpl implements ForumDAO {
 		return list;
 	}
 
-	@Override
+	@Transactional
 	public Forum getforum(int id) {
 		String hql = "from forum where id="+"'"+ id +"'";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);

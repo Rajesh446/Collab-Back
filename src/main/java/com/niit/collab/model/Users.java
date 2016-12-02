@@ -10,23 +10,34 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
 @Entity
-@Table
+@Table(name="users")
 @Component
-
-public class Users 
-{
+public class Users {
 
 	@Id
 	@GeneratedValue
 	private int id;
 	private String username;
-	private String role;
 	private String mail;
 	private String password;
-	private String mobile;
+	private String  mobile;
 	private String address;
 	private Date dob;
 	private String gender;
+	private char status;
+	private String role;
+	public char getStatus() {
+		return status;
+	}
+	public void setStatus(char status) {
+		this.status = status;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
 	public int getId() {
 		return id;
 	}
@@ -39,12 +50,7 @@ public class Users
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public String getRole() {
-		return role;
-	}
-	public void setRole(String role) {
-		this.role = role;
-	}
+	
 	public String getMail() {
 		return mail;
 	}
@@ -82,5 +88,4 @@ public class Users
 		this.gender = gender;
 	}
 	
-		
 }

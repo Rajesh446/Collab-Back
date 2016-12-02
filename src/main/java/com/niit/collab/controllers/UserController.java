@@ -21,7 +21,7 @@ public class UserController {
 private UsersDAO usersDAO;
 
 @PostMapping(value="/register")
-public ResponseEntity<Users> save( @RequestBody Users users){
+public ResponseEntity<Users> adduser( @RequestBody Users users){
 	System.out.println("hello");
 	usersDAO.save(users);
 	return new ResponseEntity<Users>(users, HttpStatus.OK);
@@ -30,8 +30,8 @@ public ResponseEntity<Users> save( @RequestBody Users users){
 @GetMapping(value="/users")
 public ResponseEntity<List<Users>> listuser(){
 	System.out.println("list of users");
-	List<Users> users =usersDAO.getAllUsers();
-	return new ResponseEntity<List<Users>>(users,HttpStatus.OK);
+	List<Users> users1 =usersDAO.list();
+	return new ResponseEntity<List<Users>>(users1,HttpStatus.OK);
 	
 }
 }

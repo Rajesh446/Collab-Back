@@ -13,9 +13,12 @@ public interface UsersDAO
 	
 	public Users validate(int id,String password);
 	
-	public Users get(int id);
 	
-	public List<Users> getAllUsers();
+	public List<Users> list();
+
+	public List<Users> getuser(int id);
+	public Users logout(int id);
+	public Users authuser(String username,String password);
 	
 	
 }

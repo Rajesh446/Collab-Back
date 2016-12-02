@@ -21,11 +21,11 @@ public class FriendDAOImpl implements FriendDAO
 	private FriendDAO friendDAO;
 	 
 	@Autowired
-	private SessionFactory SessionFactory;
+	private SessionFactory sessionFactory;
 	
 	public FriendDAOImpl(SessionFactory sessionFactory)
 	{
-		this.SessionFactory=sessionFactory;
+		this.sessionFactory=sessionFactory;
 	}
 	
 	
@@ -33,11 +33,11 @@ public class FriendDAOImpl implements FriendDAO
 	
 	@Transactional
 	
-	public boolean Save(Friend friend) 
+	public boolean saveOrUpdate(Friend friend) 
 	{
 	try
 	{
-		SessionFactory.getCurrentSession().saveOrUpdate(friend);
+		sessionFactory.getCurrentSession().saveOrUpdate(friend);
 		return true;
 		
 	}
@@ -50,7 +50,7 @@ public class FriendDAOImpl implements FriendDAO
 		return false;
 	}
 
-	@Transactional
+	/*@Transactional
 	public boolean Update(Friend friend)
 	{
 	try
@@ -64,7 +64,7 @@ public class FriendDAOImpl implements FriendDAO
 		e.printStackTrace();
 	}
 		return false;
-	}
+	}*/
 
 	@Transactional
 	public Friend getFriend(int id)
@@ -72,7 +72,7 @@ public class FriendDAOImpl implements FriendDAO
 	{
 		String hql = "from friend where id="+"'"+id+"'";
 		@SuppressWarnings({ "unused", "rawtypes" })
-		Query query = SessionFactory.getCurrentSession().createQuery(hql);
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		List<Friend>list=query.list();
 		
 		if (list==null)
@@ -93,7 +93,7 @@ public class FriendDAOImpl implements FriendDAO
 	
 	{
 	String hql="from friend where id="+"'"+id+"'"+" and status='n'";
-	Query query=SessionFactory.getCurrentSession().createQuery(hql);
+	Query query=sessionFactory.getCurrentSession().createQuery(hql);
 	List<Friend>list=query.list();
 	if(list==null)
 	{
@@ -108,14 +108,8 @@ public class FriendDAOImpl implements FriendDAO
 	}
 
 	@Transactional
-	public List<Friend> getFriendlist() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Transactional
 	public List<Friend> list() {
-		Criteria c=SessionFactory.getCurrentSession().createCriteria(Friend.class);
+		Criteria c=sessionFactory.getCurrentSession().createCriteria(Friend.class);
 		@SuppressWarnings("unchecked")
 		List<Friend>list=c.list();
 		return list;
@@ -128,7 +122,7 @@ public class FriendDAOImpl implements FriendDAO
 	public boolean Delete(Friend friend) {
 		try
 		{
-			SessionFactory.getCurrentSession().delete(friend);
+			sessionFactory.getCurrentSession().delete(friend);
 			return true;
 			
 		}
@@ -139,5 +133,23 @@ public class FriendDAOImpl implements FriendDAO
 		}
 		
 	}
+
+
+
+
+	
+
+
+	@Transactional
+	public List<Friend> getfriendlist(int uid) {
+		String hql="from Friend where userid= "+uid;
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		List<Friend> list = query.list();
+		return list;
+	}
+
+
+
+
 
 }

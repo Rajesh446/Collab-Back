@@ -2,6 +2,7 @@ package com.niit.collab.DAO;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.collab.model.Users;
+
+import antlr.collections.impl.LList;
 
 
 
@@ -112,8 +115,71 @@ public class UsersDAOImpl implements UsersDAO
 		
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
+	System.out.println("retriving the userss");
+		
 		return ((org.hibernate.Query<Users>) query).list();
 	
+	}
+
+	@Transactional
+	public List<Users> list() {
+		@SuppressWarnings("deprecation")
+		Criteria c= sessionFactory.getCurrentSession().createCriteria(Users.class);
+		@SuppressWarnings({ "unchecked", "unused" })
+		List<Users> list=c.list();
+		return list;
+	}
+
+	@Transactional
+	public List<Users> getuser(int id) {
+		
+		String hql = "from Users where id= "+ "'"+ id+"'" ;
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		List<Users>list= query.list();
+		
+		if(list==null)
+		{
+			return null;
+		}
+		else
+		{
+			return list;
+		}
+	}
+
+	@Transactional
+	public Users authuser(String username, String password) {
+		String hql="from Users where Username= "+"'"+username+"'"+"and password= "+"'"+password+"'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		List<Users>list=query.list();
+		if(list==null)
+		{
+			return null;
+		}
+		else{
+			return list.get(0);
+		}
+		
+	}
+
+	@Transactional
+	public Users logout(int id) 
+	{
+	
+		String hql="from Users where id="+"'"+ id+"'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		List<Users>list=query.list();
+		
+		if(list==null)
+		{
+			return null;
+			
+		}
+		else
+		{
+			return list.get(0);
+		}
+		
 	}
 
 	

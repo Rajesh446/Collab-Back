@@ -1,5 +1,6 @@
 package com.niit.collab.DAO;
 
+import java.beans.Transient;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -8,6 +9,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.niit.collab.model.Friend;
 
@@ -15,6 +18,8 @@ import com.niit.collab.model.Friend;
 public class FriendDAOImpl implements FriendDAO
 
 {
+	
+	public static final Logger log=LoggerFactory.getLogger(FriendDAOImpl.class);
 
 	@Autowired
 	
@@ -92,7 +97,8 @@ public class FriendDAOImpl implements FriendDAO
 	public Friend newrequest(int id)
 	
 	{
-	String hql="from friend where id="+"'"+id+"'"+" and status='n'";
+	String hql="from friend where userid="+"'"+id+"'"+" and status='n'";
+	log.debug(hql);
 	Query query=sessionFactory.getCurrentSession().createQuery(hql);
 	List<Friend>list=query.list();
 	if(list==null)
@@ -118,7 +124,7 @@ public class FriendDAOImpl implements FriendDAO
 
 
 
-	@Override
+	@Transactional
 	public boolean Delete(Friend friend) {
 		try
 		{

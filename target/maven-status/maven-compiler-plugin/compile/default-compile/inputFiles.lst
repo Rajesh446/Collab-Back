@@ -1,8 +1,12 @@
 E:\DevOps\WorkSpace1\MyChat\src\main\java\com\niit\collab\DAO\UsersDAO.java
+E:\DevOps\WorkSpace1\MyChat\src\main\java\com\niit\collab\model\Friend.java
 E:\DevOps\WorkSpace1\MyChat\src\main\java\com\niit\collab\controllers\EventController.java
 E:\DevOps\WorkSpace1\MyChat\src\main\java\com\niit\collab\controllers\UserController.java
+E:\DevOps\WorkSpace1\MyChat\src\main\java\com\niit\collab\DAO\FriendDAOImpl.java
+E:\DevOps\WorkSpace1\MyChat\src\main\java\com\niit\collab\DAO\FriendDAO.java
 E:\DevOps\WorkSpace1\MyChat\src\main\java\com\niit\collab\model\Blog.java
 E:\DevOps\WorkSpace1\MyChat\src\main\java\com\niit\collab\DAO\BlogDAO.java
+E:\DevOps\WorkSpace1\MyChat\src\main\java\com\niit\collab\controllers\FriendController.java
 E:\DevOps\WorkSpace1\MyChat\src\main\java\com\niit\collab\DAO\UsersDAOImpl.java
 E:\DevOps\WorkSpace1\MyChat\src\main\java\com\niit\collab\model\Event.java
 E:\DevOps\WorkSpace1\MyChat\src\main\java\com\niit\collab\DAO\ForumDAOImpl.java
@@ -15,3 +19,4 @@ E:\DevOps\WorkSpace1\MyChat\src\main\java\com\niit\collab\DAO\ForumDAO.java
 E:\DevOps\WorkSpace1\MyChat\src\main\java\com\niit\collab\applicationcontext\ApplicationContextConfig.java
 E:\DevOps\WorkSpace1\MyChat\src\main\java\com\niit\collab\DAO\BlogDAOImpl.java
 E:\DevOps\WorkSpace1\MyChat\src\main\java\com\niit\collab\DAO\EventDAOImpl.java
+E:\DevOps\WorkSpace1\MyChat\src\main\java\com\niit\collab\controllers\LoginController.java

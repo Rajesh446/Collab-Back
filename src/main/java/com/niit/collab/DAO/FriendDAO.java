@@ -15,6 +15,7 @@ public interface FriendDAO
 	
 	public List<Friend> list();
 	public List<Friend> getfriendlist(int uid);
+	public Friend UpdateStatus(String uid,String fid);
 	
 	
 }

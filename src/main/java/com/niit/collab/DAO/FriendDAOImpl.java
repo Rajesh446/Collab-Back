@@ -1,6 +1,5 @@
 package com.niit.collab.DAO;
 
-import java.beans.Transient;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -14,6 +13,7 @@ import org.slf4j.LoggerFactory;
 
 import com.niit.collab.model.Friend;
 
+@SuppressWarnings("deprecation")
 @Repository
 public class FriendDAOImpl implements FriendDAO
 
@@ -97,6 +97,7 @@ public class FriendDAOImpl implements FriendDAO
 	public Friend newrequest(int id)
 	
 	{
+		log.info("Starting of the session new request");
 	String hql="from friend where userid="+"'"+id+"'"+" and status='n'";
 	log.debug(hql);
 	Query query=sessionFactory.getCurrentSession().createQuery(hql);
@@ -141,11 +142,6 @@ public class FriendDAOImpl implements FriendDAO
 	}
 
 
-
-
-	
-
-
 	@Transactional
 	public List<Friend> getfriendlist(int uid) {
 		String hql="from Friend where userid= "+uid;
@@ -157,5 +153,32 @@ public class FriendDAOImpl implements FriendDAO
 
 
 
+	public Friend UpdateStatus(String uid, String fid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-}
+
+
+
+	/*public Friend UpdateStatus(String uid, String fid) {
+		
+		String hql="from friend where userid='"+uid+"'and friendid='"+fid"'";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		List<Friend> list=query.list();
+		if(list==null)
+		{
+			return null;
+		}
+		else 
+		{
+			return list.get(0);
+		}
+	*/	
+	}
+
+
+
+
+
+

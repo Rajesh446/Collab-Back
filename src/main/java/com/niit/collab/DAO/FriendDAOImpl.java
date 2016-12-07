@@ -2,14 +2,13 @@ package com.niit.collab.DAO;
 
 import java.util.List;
 
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.niit.collab.model.Friend;
 
@@ -32,10 +31,133 @@ public class FriendDAOImpl implements FriendDAO
 	{
 		this.sessionFactory=sessionFactory;
 	}
+
+	@Transactional
+	public boolean save(Friend friend)
+	
+	{
+	
+		try
+		{
+			sessionFactory.getCurrentSession().save(friend);
+			return true;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		
+		
+		return false;
+
+		}
+		
+		}
+
+	@Transactional
+	
+	public boolean update(Friend friend) {
+		try
+		{
+			sessionFactory.getCurrentSession().update(friend);
+			return true;
+		}
+		
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		
+		return false;
+		}
+		
+	}
+
+	@Transactional
+	
+	public List<Friend> getmyfriends(String uid) 
+	
+	{
+	
+		String hql="from Friend where userid='"+uid+"'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		List<Friend> list=query.list();
+		return list;
+		
+	
+	}
+
+	public List<Friend> acceptedfriends(String uid,String fid) {
+	String hql="from Friend where userid='"+uid+"'and friendid='"+fid+"'";
+	Query query=sessionFactory.getCurrentSession().createQuery(hql);
+	List<Friend> list=query.list();
+			
+		return list;
+	}
+
+	
+	@Transactional
+	
+	public boolean unfriend(Friend friend) 
+	
+	{
+	try
+	{
+		sessionFactory.getCurrentSession().delete(friend);
+		return  true;
+	}
+	
+	catch(Exception e)
+	{
+		e.printStackTrace();
+		
+	
+		return false;
+	}
+	
+	}
+
+	@Transactional
+	
+	public Friend acceptfriend(String uid, String fid)
+	
+	{
+		
+		String hql="from Friend where userid='"+uid+"' and friendid='"+fid+"'";
+		
+		Query query  =sessionFactory.getCurrentSession().createQuery(hql);
+		
+		List<Friend> list=query.list();
+		
+		if(list==null)
+		
+		{
+			return null;
+		}
+		
+		else
+		
+		{
+			return  list.get(0);
+		}
+		
+	}
 	
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
+	
+	
+	
+/*	
 	@Transactional
 	
 	public boolean saveOrUpdate(Friend friend) 
@@ -55,7 +177,7 @@ public class FriendDAOImpl implements FriendDAO
 		return false;
 	}
 
-	/*@Transactional
+	@Transactional
 	public boolean Update(Friend friend)
 	{
 	try
@@ -69,7 +191,7 @@ public class FriendDAOImpl implements FriendDAO
 		e.printStackTrace();
 	}
 		return false;
-	}*/
+	}
 
 	@Transactional
 	public Friend getFriend(int id)
@@ -161,7 +283,7 @@ public class FriendDAOImpl implements FriendDAO
 
 
 
-	/*public Friend UpdateStatus(String uid, String fid) {
+	public Friend UpdateStatus(String uid, String fid) {
 		
 		String hql="from friend where userid='"+uid+"'and friendid='"+fid"'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
@@ -174,11 +296,11 @@ public class FriendDAOImpl implements FriendDAO
 		{
 			return list.get(0);
 		}
-	*/	
+		
 	}
 
 
 
 
 
-
+*/

@@ -83,7 +83,7 @@ public class UsersDAOImpl implements UsersDAO
 	}
 
 	@Transactional
-	public Users validate(int id, String password)
+	public Users validate(String id, String password)
 	
 	{
 	
@@ -131,7 +131,7 @@ public class UsersDAOImpl implements UsersDAO
 	}
 
 	@Transactional
-	public List<Users> getuser(int id) {
+	public List<Users> getuser(String id) {
 		
 		String hql = "from Users where id= "+ "'"+ id+"'" ;
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
@@ -163,7 +163,7 @@ public class UsersDAOImpl implements UsersDAO
 	}
 
 	@Transactional
-	public Users logout(int id) 
+	public Users logout(String id) 
 	{
 	
 		String hql="from Users where id="+"'"+ id+"'";
@@ -180,6 +180,16 @@ public class UsersDAOImpl implements UsersDAO
 			return list.get(0);
 		}
 		
+	}
+
+	public Users validate(int id, String password) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Users logout(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

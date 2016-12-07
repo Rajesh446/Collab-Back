@@ -16,7 +16,7 @@ public class Users {
 
 	@Id
 	@GeneratedValue
-	private int id;
+	private String id;
 	private String username;
 	private String mail;
 	private String password;
@@ -38,10 +38,10 @@ public class Users {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getUsername() {

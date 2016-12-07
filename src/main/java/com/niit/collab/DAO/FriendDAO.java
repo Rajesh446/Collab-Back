@@ -7,15 +7,13 @@ import com.niit.collab.model.*;
 public interface FriendDAO
 {
 
-	public boolean saveOrUpdate(Friend friend);
-	/*public boolean Update(Friend friend);*/
-	public boolean Delete(Friend friend);
-	public Friend getFriend(int id);
-	public Friend newrequest(int id);
+	public boolean save(Friend friend);
+	public boolean update(Friend friend);
+	public List<Friend> getmyfriends(String uid);
+	public Friend acceptfriend(String uid,String fid);
+	public List<Friend> acceptedfriends(String uid,String fid);
+	public boolean unfriend(Friend friend);
 	
-	public List<Friend> list();
-	public List<Friend> getfriendlist(int uid);
-	public Friend UpdateStatus(String uid,String fid);
 	
 	
 }

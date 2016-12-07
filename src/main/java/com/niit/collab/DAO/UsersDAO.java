@@ -16,8 +16,8 @@ public interface UsersDAO
 	
 	public List<Users> list();
 
-	public List<Users> getuser(int id);
-	public Users logout(int id);
+	public List<Users> getuser(String id);
+	public Users logout(String id);
 	public Users authuser(String username,String password);
 	
 	

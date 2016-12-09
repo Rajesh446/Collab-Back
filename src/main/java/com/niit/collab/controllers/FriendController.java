@@ -1,3 +1,4 @@
+
 package com.niit.collab.controllers;
 
 import java.util.List;
@@ -114,7 +115,17 @@ public void unfriend(@PathVariable("fid") String fid,HttpSession session)
 	friendDAO.update(friend1);
 	
 }
+@RequestMapping(value="/newrequest" , method=RequestMethod.GET)
+public ResponseEntity<List<Friend>> newrequest(HttpSession session)
+{
 	
+	
+	String uid=(String)session.getAttribute("username");
+	List<Friend> list=friendDAO.getrequestlist(uid);
+	return new ResponseEntity<List<Friend>> (list,HttpStatus.OK);
+	
+	
+}
 
 
 

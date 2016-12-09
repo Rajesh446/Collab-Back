@@ -84,7 +84,7 @@ public class FriendDAOImpl implements FriendDAO
 		
 	
 	}
-
+@Transactional
 	public List<Friend> acceptedfriends(String uid,String fid) {
 	String hql="from Friend where userid='"+uid+"'and friendid='"+fid+"'";
 	Query query=sessionFactory.getCurrentSession().createQuery(hql);
@@ -139,6 +139,32 @@ public class FriendDAOImpl implements FriendDAO
 			return  list.get(0);
 		}
 		
+	}
+
+	@Transactional
+	public Friend newrequest(String uid, String fid) {
+		String hql="from Friend where userid='"+uid+"' and friendid='"+fid+"'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		List<Friend> list=query.list();
+		if(list==null)
+		{
+			
+		return null;
+		
+		}
+		else
+		{
+			return list.get(0);
+		}
+		}
+
+	@Transactional
+	public List<Friend> getrequestlist(String uid) {
+		String hql="from Friend where friendid='"+uid+"' and status='n'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		List<Friend> list=query.list();
+		
+		return list;
 	}
 	
 	

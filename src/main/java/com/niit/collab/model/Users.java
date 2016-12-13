@@ -14,9 +14,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class Users {
 
+	
 	@Id
 	@GeneratedValue
-	private String id;
+	private int id;
 	private String username;
 	private String mail;
 	private String password;
@@ -26,6 +27,20 @@ public class Users {
 	private String gender;
 	private char status;
 	private String role;
+	private byte[] image;
+	
+	public byte[] getImage() 
+	
+	{
+		return image;
+	}
+	
+	public void setImage(byte[] image)
+	
+	{
+		this.image = image;
+	}
+	
 	public char getStatus() {
 		return status;
 	}
@@ -38,10 +53,10 @@ public class Users {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	public String getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getUsername() {

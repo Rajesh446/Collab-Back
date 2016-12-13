@@ -1,7 +1,8 @@
 package com.niit.collab.controllers;
 
+/*import java.util.Date;
 import java.util.List;
-
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,8 +17,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.niit.collab.DAO.BlogDAO;
-import com.niit.collab.model.Blog;
+import com.niit.collab.model.Blog;*/
+import java.util.Date;
+import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.niit.collab.DAO.BlogDAO;
+import com.niit.collab.model.*;
 @RestController
 public class BlogController {
 @Autowired
@@ -25,8 +42,11 @@ private BlogDAO blogDAO;
 
 
 @PostMapping(value="/createblog")
-public ResponseEntity<Blog> addblog(@RequestBody Blog blog){
-	System.out.println("hello");
+public ResponseEntity<Blog> addblog(@RequestBody Blog blog, HttpSession session){
+	System.out.println("Creation of BLOG");
+	String uid=(String) session.getAttribute("username");
+	blog.setDoc(new Date());
+	blog.setUserid(uid);
 	blogDAO.Save(blog);
 	return new ResponseEntity<Blog>(blog,HttpStatus.OK);
 	

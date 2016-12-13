@@ -11,8 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.collab.model.Users;
 
-import antlr.collections.impl.LList;
-
 
 
 @Repository
@@ -83,7 +81,7 @@ public class UsersDAOImpl implements UsersDAO
 	}
 
 	@Transactional
-	public Users validate(String id, String password)
+	public Users validate(int id, String password)
 	
 	{
 	
@@ -131,7 +129,7 @@ public class UsersDAOImpl implements UsersDAO
 	}
 
 	@Transactional
-	public List<Users> getuser(String id) {
+	public List<Users> getuser(int id) {
 		
 		String hql = "from Users where id= "+ "'"+ id+"'" ;
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
@@ -163,7 +161,7 @@ public class UsersDAOImpl implements UsersDAO
 	}
 
 	@Transactional
-	public Users logout(String id) 
+	public Users logout(int id) 
 	{
 	
 		String hql="from Users where id="+"'"+ id+"'";
@@ -182,15 +180,63 @@ public class UsersDAOImpl implements UsersDAO
 		
 	}
 
-	public Users validate(int id, String password) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean delete(Users users) {
+	try
+	{
+		sessionFactory.getCurrentSession().delete(users);
+		
+		return true;
+	}
+	
+	catch(Exception e)
+	{
+		e.printStackTrace();
+	
+		return false;
+	}
+	
 	}
 
-	public Users logout(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	@Transactional
+	public Users oneuser(int id) {
+		String hql = "from Users where id= "+ "'"+ id+"'" ;
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		List<Users>list= query.list();
+		
+		if(list==null)
+		{
+			return null;
+		}
+		else
+		{
+			return list.get(0);
+		}
 	}
+	@Transactional
+	public Users profileof(String username) {
+		String hql="from Users where username='"+username+"'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		List<Users>list= query.list();
+		
+		if(list==null)
+		{
+			return null;
+		}
+		else
+		{
+			return list.get(0);
+		}
+	}
+
+	@Transactional
+	public List<Users> nonfriends(int id) {
+		String hql = "from Users where id !='"+id+"'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		List<Users> list= query.list();
+		return list;
+	}
+
+	
 
 	
 	

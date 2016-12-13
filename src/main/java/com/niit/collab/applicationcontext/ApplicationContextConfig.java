@@ -56,6 +56,7 @@ public SessionFactory getSessionFactory(DataSource dataSource){
 	sessionBuilder.addAnnotatedClass(Users.class);
 	sessionBuilder.addAnnotatedClass(Event.class);
 	sessionBuilder.addAnnotatedClass(Forum.class);
+	sessionBuilder.addAnnotatedClass(ForumCommet.class);
 	sessionBuilder.addAnnotatedClass(Friend.class);
 	sessionBuilder.addAnnotatedClass(Message.class);
 	sessionBuilder.addAnnotatedClass(OutputMessage.class);
@@ -79,7 +80,7 @@ public BlogDAO getBlogDAO(SessionFactory sessionFactory){
 }
 
 
-@Autowired
+@Autowired     
 
 @Bean(name="usersDAO")
 public UsersDAO getUsersDAO(SessionFactory sessionFactory)
@@ -104,10 +105,17 @@ public ForumDAO getForumDAO(SessionFactory sessionFactory){
 
 @Autowired
 @Bean(name="friendDAO")
-public FriendDAO getJobDAO(SessionFactory sessionFactory){
+public FriendDAO getFriendDAO(SessionFactory sessionFactory){
 	
 	return new FriendDAOImpl(sessionFactory);
 }
+
+@Bean(name="forumCommetDAO")
+public ForumCommetDAO getForumCommetDAO(SessionFactory sessionFactory){
+	
+	return new ForumCommetDAOImpl(sessionFactory);
+}
+
 /*@Autowired
 @Bean(name="jobDAO")
 public JobDAO getJobDAO(SessionFactory sessionFactory){

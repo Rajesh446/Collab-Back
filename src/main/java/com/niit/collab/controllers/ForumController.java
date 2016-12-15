@@ -36,7 +36,7 @@ public class ForumController
 	{
 	
 		System.out.println("Creation of FORUM");
-		String uid=(String) session.getAttribute("uid");
+		int uid=(Integer) session.getAttribute("uid");
 		forum.setDoc(new Date());
 		forum.setUserid(uid);
 		forumDAO.save(forum);
@@ -72,6 +72,17 @@ public class ForumController
 		System.out.println("list of forum");
 		List<Forum> forum =forumDAO.list();
 		return new ResponseEntity<List<Forum>>(forum,HttpStatus.OK);
+	}
+	
+	
+	@RequestMapping(value="/individualForum/{id}",method=RequestMethod.GET)
+	public ResponseEntity<Forum> individualForum(@PathVariable("id") int id)
+	{
+		
+		Forum forum=forumDAO.getforum(id);
+		return new ResponseEntity<Forum>(forum,HttpStatus.OK);
+		
+		
 	}
 	
 	

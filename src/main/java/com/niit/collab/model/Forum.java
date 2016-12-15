@@ -15,8 +15,6 @@ import org.springframework.stereotype.Component;
 @Table
 @Component
 public class Forum 
-
-
 {
 
 @Id
@@ -24,7 +22,7 @@ public class Forum
 private int id;
 private String name;
 private String topic;
-private String userid;
+private int userid;
 private Date doc;
 private String Description;
 public int getId() {
@@ -45,11 +43,11 @@ public String getTopic() {
 public void setTopic(String topic) {
 	this.topic = topic;
 }
-public String getUserid() {
+public int getUserid() {
 	return userid;
 }
-public void setUserid(String userid) {
-	this.userid = userid;
+public void setUserid(int uid) {
+	this.userid = uid;
 }
 public Date getDoc() {
 	return doc;

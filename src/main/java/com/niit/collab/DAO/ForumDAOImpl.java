@@ -2,10 +2,9 @@ package com.niit.collab.DAO;
 
 import java.util.List;
 
-import javax.persistence.Query;
-
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -86,15 +85,15 @@ public class ForumDAOImpl implements ForumDAO {
 	}
 
 	@Transactional
+	@SuppressWarnings({ "deprecation", "unchecked", "rawtypes" })
 	public Forum getforum(int id) {
-		String hql = "from forum where id="+"'"+ id +"'";
+		String hql = "from Forum where id= "+ "'"+ id+"'" ;
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		@SuppressWarnings("unchecked")
-		List<Forum>list=((Criteria) query).list(); 
+		List<Forum>list= query.list();
+		
 		if(list==null)
 		{
 			return null;
-			
 		}
 		else
 		{

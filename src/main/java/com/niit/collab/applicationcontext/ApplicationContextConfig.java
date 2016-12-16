@@ -53,6 +53,7 @@ public SessionFactory getSessionFactory(DataSource dataSource){
 	LocalSessionFactoryBuilder sessionBuilder=new LocalSessionFactoryBuilder(dataSource);
 	sessionBuilder.addProperties(getHibernateProperties());
 	sessionBuilder.addAnnotatedClass(Blog.class);
+	sessionBuilder.addAnnotatedClass(BlogRating.class);
 	sessionBuilder.addAnnotatedClass(Users.class);
 	sessionBuilder.addAnnotatedClass(Event.class);
 	sessionBuilder.addAnnotatedClass(Forum.class);
@@ -77,6 +78,12 @@ return transactionManager;
 public BlogDAO getBlogDAO(SessionFactory sessionFactory){
 	
 	return new BlogDAOImpl(sessionFactory);
+}
+
+@Bean(name="blogRatingDAO")
+public BlogRatingDAO getBlogRatingDAO(SessionFactory sessionFactory){
+	
+	return new BlogRatingDAOImpl();
 }
 
 

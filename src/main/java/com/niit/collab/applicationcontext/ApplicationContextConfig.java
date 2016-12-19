@@ -53,7 +53,8 @@ public SessionFactory getSessionFactory(DataSource dataSource){
 	LocalSessionFactoryBuilder sessionBuilder=new LocalSessionFactoryBuilder(dataSource);
 	sessionBuilder.addProperties(getHibernateProperties());
 	sessionBuilder.addAnnotatedClass(Blog.class);
-	sessionBuilder.addAnnotatedClass(BlogRating.class);
+	//sessionBuilder.addAnnotatedClass(BlogRating.class);
+	sessionBuilder.addAnnotatedClass(BlogLikes.class);
 	sessionBuilder.addAnnotatedClass(Users.class);
 	sessionBuilder.addAnnotatedClass(Event.class);
 	sessionBuilder.addAnnotatedClass(Forum.class);
@@ -80,13 +81,18 @@ public BlogDAO getBlogDAO(SessionFactory sessionFactory){
 	return new BlogDAOImpl(sessionFactory);
 }
 
-@Bean(name="blogRatingDAO")
+/*@Bean(name="blogRatingDAO")
 public BlogRatingDAO getBlogRatingDAO(SessionFactory sessionFactory){
 	
 	return new BlogRatingDAOImpl();
 }
-
-
+*/
+@Autowired
+@Bean(name="blogLikesDAO")
+public BlogLikesDAO getBlogLikesDAO(SessionFactory sessionFactory){
+	
+	return new BlogLikesDAOImpl(sessionFactory);
+}
 @Autowired     
 
 @Bean(name="usersDAO")

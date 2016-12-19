@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.collab.model.Blog;
+import com.niit.collab.model.BlogLikes;
 
 
 
@@ -89,6 +90,16 @@ public boolean update(Blog blog) {
 		}
 	}
 	
-	
+	/*@Transactional
+	public boolean saveOrUpdate(Blog blog) {
+		try {
+			sessionFactory.getCurrentSession().saveOrUpdate(blog);
+			System.out.println("save");
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}*/
 	
 }

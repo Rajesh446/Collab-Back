@@ -25,6 +25,15 @@ public class Blog
 	private Date doc;
 	private String content;
 	private String username;
+	
+	private Integer bloglike;
+	
+	public Integer getBloglike() {
+		return bloglike;
+	}
+	public void setBloglike(Integer bloglike) {
+		this.bloglike = bloglike;
+	}
 	public String getUsername() {
 		return username;
 	}
